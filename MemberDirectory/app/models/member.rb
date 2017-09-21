@@ -11,6 +11,7 @@ class Member < ActiveRecord::Base
       end
     end
   end
+  
 
   def self.search_experts(search)
     if search
