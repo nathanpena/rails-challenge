@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   has_friendship
-  has_many :site_headings
+  has_many :site_headings, dependent: :destroy
   after_save :create_member_site_headings, if: ->(member){ member.website.present? and member.website_changed? }
 
   def create_member_site_headings
