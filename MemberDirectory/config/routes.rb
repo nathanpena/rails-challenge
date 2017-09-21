@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "members#index"
-  resources :members do 
+  resources :members do
+    collection do
+      get :search_experts
+    end 
     member do
       post :make_friend
     end

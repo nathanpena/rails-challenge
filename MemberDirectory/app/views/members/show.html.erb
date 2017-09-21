@@ -9,10 +9,10 @@
   </div>
 </div>
 
-<table class='table'>
+<table class='table' id="friends_table">
   <thead>
     <tr>
-      <th class="groupse">Name</th>
+      <th>Name</th>
       <th></th>
     </tr>
   </thead>
@@ -21,6 +21,13 @@
     <td><%= link_to "Add Friend", make_friend_member_path(:friend_id => member.id), :class => "btn btn-primary", :method=> :post %></td>
   <% end %>
 </table>
+
+<%= form_tag(search_experts_members_path, :method => "get", remote: true, id: "search-experts-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Experts" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<div id="expert_results"></div>
 
 
 <%= link_to 'Edit', edit_member_path(@member) %> |

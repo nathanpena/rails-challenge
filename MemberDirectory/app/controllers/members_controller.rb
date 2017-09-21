@@ -64,12 +64,19 @@ class MembersController < ApplicationController
 
   def make_friend
     set_friend
-    byebug
+
     unless @member.friends_with?(@friend)
       @member.friend_request(@friend)
       @friend.accept_request(@member)
     end
     redirect_to :back
+  end
+
+  def search_experts
+    @experts = Member.search_experts(params[:search])
+    respond_to do |format|
+      format.js 
+    end
   end
 
   private

@@ -1,0 +1,8 @@
+$('#expert_results').empty()
+$('input#search').val('');
+
+<% if @experts.present? %>
+  $('#expert_results').html("<%= j @experts.pluck(:name).join('<br/>') %>")
+<% else %>
+  $('#expert_results').html("No results found")
+<% end %>

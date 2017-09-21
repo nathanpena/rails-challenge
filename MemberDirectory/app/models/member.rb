@@ -11,4 +11,12 @@ class Member < ActiveRecord::Base
       end
     end
   end
+
+  def self.search_experts(search)
+    if search
+      Member.joins(:site_headings).where('site_headings.content like ?', "%#{search}%").uniq
+    else
+      []
+    end
+  end
 end
