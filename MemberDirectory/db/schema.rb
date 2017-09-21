@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921140407) do
+ActiveRecord::Schema.define(version: 20170921150309) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendable_id"
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 20170921140407) do
 
   create_table "site_headings", force: :cascade do |t|
     t.string   "content"
-    t.string   "type"
+    t.string   "header_type"
     t.integer  "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "site_headings", ["member_id"], name: "index_site_headings_on_member_id"

@@ -12,5 +12,6 @@ class WebScraper
     ['h1', 'h2', 'h3'].each do |header_type|
       site_headings[header_type.to_sym] = doc.css(header_type).children.map {|child| child.text.gsub(/[^0-9a-z ]/i, '')}
     end
+    self
   end
 end
