@@ -1,14 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
+<div class="row">
+  <div class="col-md-12">
+      <%= @member.name %>
+    <div class="description row-space-3">
+      <%= @member.website %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Website:</strong>
-  <%= @member.website %>
-</p>
+<table class='table'>
+  <thead>
+    <tr>
+      <th class="groupse">Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @members.each do |member| %>
+    <td class="groupse"><%= member.name %></td>
+    <td><%= link_to "Add Friend", make_friend_member_path(:friend_id => member.id), :class => "btn btn-primary", :method=> :post %></td>
+  <% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

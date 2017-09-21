@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :make_friend]
 
   # GET /members
   # GET /members.json
@@ -10,6 +10,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    @members = Member.where.not(id: @member.id)
   end
 
   # GET /members/new
@@ -61,11 +62,25 @@ class MembersController < ApplicationController
     end
   end
 
+  def make_friend
+    set_friend
+    byebug
+    unless @member.friends_with?(@friend)
+      @member.friend_request(@friend)
+      @friend.accept_request(@member)
+    end
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
     end
+
+    def set_friend
+      @friend = Member.find(params[:friend_id])
+    end 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params

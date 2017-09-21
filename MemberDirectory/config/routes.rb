@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "members#index"
-  resources :members
+  resources :members do 
+    member do
+      post :make_friend
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
