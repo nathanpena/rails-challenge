@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <% @members.each do |member| %>
-    <td class="groupse"><%= member.name %></td>
+    <td><%= member.name %></td>
     <td><%= link_to "Add Friend", make_friend_member_path(:friend_id => member.id), :class => "btn btn-primary", :method=> :post %></td>
   <% end %>
 </table>
